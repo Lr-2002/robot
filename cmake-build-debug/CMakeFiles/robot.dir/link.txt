@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/robot.dir/main.cpp.o  -o robot   -L/home/lr-2002/application/webots/lib  -Wl,-rpath,/home/lr-2002/application/webots/lib -lController -lCppController 
