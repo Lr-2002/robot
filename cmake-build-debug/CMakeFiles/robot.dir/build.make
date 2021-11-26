@@ -77,9 +77,22 @@ include CMakeFiles/robot.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/robot.dir/flags.make
 
+CMakeFiles/robot.dir/controller.cpp.o: CMakeFiles/robot.dir/flags.make
+CMakeFiles/robot.dir/controller.cpp.o: ../controller.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/robot.dir/controller.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/robot.dir/controller.cpp.o -c /home/lr-2002/code/c++/robot/controller.cpp
+
+CMakeFiles/robot.dir/controller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/robot.dir/controller.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lr-2002/code/c++/robot/controller.cpp > CMakeFiles/robot.dir/controller.cpp.i
+
+CMakeFiles/robot.dir/controller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/robot.dir/controller.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lr-2002/code/c++/robot/controller.cpp -o CMakeFiles/robot.dir/controller.cpp.s
+
 CMakeFiles/robot.dir/main.cpp.o: CMakeFiles/robot.dir/flags.make
 CMakeFiles/robot.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/robot.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/robot.dir/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/robot.dir/main.cpp.o -c /home/lr-2002/code/c++/robot/main.cpp
 
 CMakeFiles/robot.dir/main.cpp.i: cmake_force
@@ -90,17 +103,34 @@ CMakeFiles/robot.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/robot.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lr-2002/code/c++/robot/main.cpp -o CMakeFiles/robot.dir/main.cpp.s
 
+CMakeFiles/robot.dir/webotsInterface.cpp.o: CMakeFiles/robot.dir/flags.make
+CMakeFiles/robot.dir/webotsInterface.cpp.o: ../webotsInterface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/robot.dir/webotsInterface.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/robot.dir/webotsInterface.cpp.o -c /home/lr-2002/code/c++/robot/webotsInterface.cpp
+
+CMakeFiles/robot.dir/webotsInterface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/robot.dir/webotsInterface.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lr-2002/code/c++/robot/webotsInterface.cpp > CMakeFiles/robot.dir/webotsInterface.cpp.i
+
+CMakeFiles/robot.dir/webotsInterface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/robot.dir/webotsInterface.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lr-2002/code/c++/robot/webotsInterface.cpp -o CMakeFiles/robot.dir/webotsInterface.cpp.s
+
 # Object files for target robot
 robot_OBJECTS = \
-"CMakeFiles/robot.dir/main.cpp.o"
+"CMakeFiles/robot.dir/controller.cpp.o" \
+"CMakeFiles/robot.dir/main.cpp.o" \
+"CMakeFiles/robot.dir/webotsInterface.cpp.o"
 
 # External object files for target robot
 robot_EXTERNAL_OBJECTS =
 
+robot: CMakeFiles/robot.dir/controller.cpp.o
 robot: CMakeFiles/robot.dir/main.cpp.o
+robot: CMakeFiles/robot.dir/webotsInterface.cpp.o
 robot: CMakeFiles/robot.dir/build.make
 robot: CMakeFiles/robot.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable robot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable robot"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/robot.dir/link.txt --verbose=$(VERBOSE)
 	/home/lr-2002/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/203.7717.62/bin/cmake/linux/bin/cmake -E copy /home/lr-2002/code/c++/robot/cmake-build-debug/robot /home/lr-2002/code/c++/robot
 

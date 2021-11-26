@@ -88,7 +88,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/lr-2002/code/c++/robot/controller.cpp">
+			<Option target="robot"/>
+		</Unit>
+		<Unit filename="/home/lr-2002/code/c++/robot/controller.hpp">
+			<Option target="robot"/>
+		</Unit>
 		<Unit filename="/home/lr-2002/code/c++/robot/main.cpp">
+			<Option target="robot"/>
+		</Unit>
+		<Unit filename="/home/lr-2002/code/c++/robot/webotsInterface.cpp">
+			<Option target="robot"/>
+		</Unit>
+		<Unit filename="/home/lr-2002/code/c++/robot/webotsInterface.hpp">
 			<Option target="robot"/>
 		</Unit>
 		<Unit filename="/home/lr-2002/code/c++/robot/CMakeLists.txt">
