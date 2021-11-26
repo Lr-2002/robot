@@ -10,7 +10,7 @@ project(${PROJECT})
 IF (WIN32)
     link_directories($ENV{WEBOTS_HOME}/msys64/mingw64/bin)
 ELSE()
-    link_directories(${WEBOTS_HOME}/lib)
+    link_directories(${WEBOTS_HOME}/lib/controller)
 ENDIF()
 
 file(GLOB C_SOURCES *.c)

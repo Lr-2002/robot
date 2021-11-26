@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/lr-2002/code/c++/robot/controller.cpp" "/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles/robot.dir/controller.cpp.o"
   "/home/lr-2002/code/c++/robot/main.cpp" "/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles/robot.dir/main.cpp.o"
+  "/home/lr-2002/code/c++/robot/webotsInterface.cpp" "/home/lr-2002/code/c++/robot/cmake-build-debug/CMakeFiles/robot.dir/webotsInterface.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

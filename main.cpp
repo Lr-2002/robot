@@ -1,7 +1,26 @@
 #include <iostream>
-#include <Eigen/Eigen>
-#include <webots/Brake.hpp>
-int main() {
-    std::cout << "Hello, World!" << std::endl;
+#include <Eigen/Dense>
+#include <webots/Robot.hpp>
+#include <webots/DistanceSensor.hpp>
+#include "controller.hpp"
+#include "webotsInterface.hpp"
+using namespace std;
+using namespace Eigen;
+int main(int argc, char ** argv)
+{
+    wb_robot_init(); // todo to implementation
+    webots_device_init();
+    robot_init();
+
+    while (wb_robot_step(TIME_STEP) != -1)
+    {
+        update_robot_state();
+        robot_control();
+    }
+
+    robot_free();
+    wb_robot_cleanup();
     return 0;
+
+
 }
