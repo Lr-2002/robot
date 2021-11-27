@@ -244,11 +244,14 @@ CMakeFiles/robot.dir/controller.cpp.o: /home/linuxbrew/.linuxbrew/include/eigen3
 CMakeFiles/robot.dir/controller.cpp.o: /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/plugins/ReshapedMethods.h
 CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/c/webots/types.h
 CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/Device.hpp
-CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/DistanceSensor.hpp
+CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/InertialUnit.hpp
+CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/Keyboard.hpp
 CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/Motor.hpp
 CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/PositionSensor.hpp
 CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/Robot.hpp
+CMakeFiles/robot.dir/controller.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/TouchSensor.hpp
 CMakeFiles/robot.dir/controller.cpp.o: ../controller.cpp
+CMakeFiles/robot.dir/controller.cpp.o: ../controller.hpp
 
 CMakeFiles/robot.dir/main.cpp.o: /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Cholesky
 CMakeFiles/robot.dir/main.cpp.o: /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Core
@@ -494,6 +497,12 @@ CMakeFiles/robot.dir/main.cpp.o: /home/linuxbrew/.linuxbrew/include/eigen3/Eigen
 CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/c/webots/types.h
 CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/Device.hpp
 CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/DistanceSensor.hpp
+CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/InertialUnit.hpp
+CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/Keyboard.hpp
+CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/Motor.hpp
+CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/PositionSensor.hpp
 CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/Robot.hpp
+CMakeFiles/robot.dir/main.cpp.o: /home/lr-2002/application/webots/include/controller/cpp/webots/TouchSensor.hpp
+CMakeFiles/robot.dir/main.cpp.o: ../controller.hpp
 CMakeFiles/robot.dir/main.cpp.o: ../main.cpp
 

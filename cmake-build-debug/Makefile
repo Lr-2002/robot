@@ -197,33 +197,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot.dir/build.make CMakeFiles/robot.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-webotsInterface.o: webotsInterface.cpp.o
-
-.PHONY : webotsInterface.o
-
-# target to build an object file
-webotsInterface.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot.dir/build.make CMakeFiles/robot.dir/webotsInterface.cpp.o
-.PHONY : webotsInterface.cpp.o
-
-webotsInterface.i: webotsInterface.cpp.i
-
-.PHONY : webotsInterface.i
-
-# target to preprocess a source file
-webotsInterface.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot.dir/build.make CMakeFiles/robot.dir/webotsInterface.cpp.i
-.PHONY : webotsInterface.cpp.i
-
-webotsInterface.s: webotsInterface.cpp.s
-
-.PHONY : webotsInterface.s
-
-# target to generate assembly for a file
-webotsInterface.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot.dir/build.make CMakeFiles/robot.dir/webotsInterface.cpp.s
-.PHONY : webotsInterface.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -239,9 +212,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... webotsInterface.o"
-	@echo "... webotsInterface.i"
-	@echo "... webotsInterface.s"
 .PHONY : help
 
 

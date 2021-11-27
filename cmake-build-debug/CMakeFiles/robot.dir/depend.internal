@@ -245,11 +245,14 @@ CMakeFiles/robot.dir/controller.cpp.o
  /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/plugins/ReshapedMethods.h
  /home/lr-2002/application/webots/include/controller/c/webots/types.h
  /home/lr-2002/application/webots/include/controller/cpp/webots/Device.hpp
- /home/lr-2002/application/webots/include/controller/cpp/webots/DistanceSensor.hpp
+ /home/lr-2002/application/webots/include/controller/cpp/webots/InertialUnit.hpp
+ /home/lr-2002/application/webots/include/controller/cpp/webots/Keyboard.hpp
  /home/lr-2002/application/webots/include/controller/cpp/webots/Motor.hpp
  /home/lr-2002/application/webots/include/controller/cpp/webots/PositionSensor.hpp
  /home/lr-2002/application/webots/include/controller/cpp/webots/Robot.hpp
+ /home/lr-2002/application/webots/include/controller/cpp/webots/TouchSensor.hpp
  /home/lr-2002/code/c++/robot/controller.cpp
+ /home/lr-2002/code/c++/robot/controller.hpp
 CMakeFiles/robot.dir/main.cpp.o
  /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Cholesky
  /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Core
@@ -495,5 +498,11 @@ CMakeFiles/robot.dir/main.cpp.o
  /home/lr-2002/application/webots/include/controller/c/webots/types.h
  /home/lr-2002/application/webots/include/controller/cpp/webots/Device.hpp
  /home/lr-2002/application/webots/include/controller/cpp/webots/DistanceSensor.hpp
+ /home/lr-2002/application/webots/include/controller/cpp/webots/InertialUnit.hpp
+ /home/lr-2002/application/webots/include/controller/cpp/webots/Keyboard.hpp
+ /home/lr-2002/application/webots/include/controller/cpp/webots/Motor.hpp
+ /home/lr-2002/application/webots/include/controller/cpp/webots/PositionSensor.hpp
  /home/lr-2002/application/webots/include/controller/cpp/webots/Robot.hpp
+ /home/lr-2002/application/webots/include/controller/cpp/webots/TouchSensor.hpp
+ /home/lr-2002/code/c++/robot/controller.hpp
  /home/lr-2002/code/c++/robot/main.cpp

@@ -1,14 +1,6 @@
-//#include <webots/motor.h>
-#include <webots/Robot.hpp>
-#include <webots/Motor.hpp>
-#include <webots/PositionSensor.hpp>
-#include <iostream>
 #include "controller.hpp"
-#include "webotsInterface.hpp"
 #include <cmath>
 #include <Eigen/Dense>
-#include <webots/Keyboard.hpp>
-#include <webots/DistanceSensor.hpp>
 
 using namespace Eigen;
 void update_xz_dot_desire();
@@ -60,9 +52,29 @@ void calculate_RPY(Matrix3d& out_rot, double roll, double pitch, double yaw){
 
 MyRobot::MyRobot() {
     bool temp = true;
+
+    touch_sensor = getTouchSensor("touch sensor");
+    IMU = getInertialUnit("inertial unit");
+    spring_motor = getMotor("spring motor");
+    Z_motor = getMotor("ztational motor");
+    X_motor = getMotor("x rotational motor");
+    spring_position_sensor =  getPositionSensor("position sensor");
+    X_motor_pos_sensor = getPositionSensor("x position sensor");
+    Z_motor_pos_sensor = getPositionSensor("z position sensor");
+    spring_position_sensor->enable(TIME_STEP);
+    X_motor_pos_sensor->enable(TIME_STEP);
+    Z_motor_pos_sensor->enable(TIME_STEP);
+    touch_sensor->enable(TIME_STEP);
+    keyboard.enable(TIME_STEP);
+    IMU->enable(TIME_STEP);
 }
 MyRobot::~MyRobot() noexcept = default;
 
+void MyRobot::run() {
+    update_robot_state();
+    robot_control();
+
+}
 void MyRobot::update_robot_state() {
     // change coordinate
     // change time
@@ -129,7 +141,7 @@ void MyRobot::robot_control() {
         set_Z_torque(0);
     }
 
-    if(robot_state == COMPRESSING || robot_state == THRUST)
+    if(robot_state == COMPRESSION || robot_state == THRUST)
     {
         double Tx, Tz;
         Tx = -(-k_p_pose * euler_angle.roll - k_v_pose * euler_angle_dot.roll);
@@ -171,61 +183,127 @@ void MyRobot::robot_control() {
 
 }
 
-void MyRobot::forward_kinematics(Matrix3d *work_point, Vector3d *joint_point) {
+void MyRobot::forward_kinematics(Vector3d &work_point, joint_space_typedef & joint_point) {
 
+    double Tx = joint_point.X_motor_angle*PI/180.0;
+    double Tz = joint_point.Z_motor_angle*PI/180.0;
+    double r  = joint_point.r;
+
+    work_point[0] =  r*sin(Tz);
+    work_point[1] = -r*cos(Tz)*cos(Tx);
+    work_point[2] = -r*cos(Tz)*sin(Tx);
 }
 
-void MyRobot::update_xz_dot_desire() {
+void MyRobot::update_xz_dot() {
+    forward_kinematics(work_point_B, joint_point);
 
-}
 
-void MyRobot :: update_xz_dot() {
-    webots::Keyboard temp ;
-    switch(get_keyboard())
+    //转换到{H}坐标系下
+    double pre_x = work_point_H[0];
+    double pre_z = work_point_H[2];
+    work_point_H = R_H_B * work_point_B;
+    double now_x = work_point_H[0];
+    double now_z = work_point_H[2];
+    //求导
+    double now_x_dot = -(now_x - pre_x)/(0.001*TIME_STEP);
+    double now_z_dot = -(now_z - pre_z)/(0.001*TIME_STEP);
+
+    //滤波
+    static double pre_x_dot = 0;
+    static double pre_z_dot = 0;
+    now_x_dot = pre_x_dot*0.5 + now_x_dot*0.5;
+    now_z_dot = pre_z_dot*0.5 + now_z_dot*0.5;
+    pre_x_dot = now_x_dot;
+    pre_z_dot = now_z_dot;
+
+    if((robot_state == COMPRESSION)||(robot_state ==  THRUST))
     {
-        case temp.UP:
-        {
-             x_dot_desire =  v;
+        x_dot = now_x_dot;
+        z_dot = now_z_dot;
+    }
+}
+
+void MyRobot ::update_xz_dot_desire() {
+    webots::Keyboard temp;
+    switch (get_keyboard()) {
+        case temp.UP: {
+            x_dot_desire = v;
             break;
         }
-        case temp.DOWN:
-        {
-             x_dot_desire = - v;
+        case temp.DOWN: {
+            x_dot_desire = -v;
             break;
         }
-        case temp.RIGHT:
-        {
-             z_dot_desire =  v;
+        case temp.RIGHT: {
+            z_dot_desire = v;
             break;
         }
-        case temp.LEFT:
-        {
-             z_dot_desire = - v;
+        case temp.LEFT: {
+            z_dot_desire = -v;
             break;
         }
-        default:
-        {
-             z_dot_desire = 0;
-             x_dot_desire = 0;
+        default: {
+            z_dot_desire = 0;
+            x_dot_desire = 0;
             break;
         }
 
     }
+}
 
 void MyRobot::update_last_Ts() {
-
+    static bool pre_is_foot_touching = false;
+    static int stance_start_ms = 0;
+    if(pre_is_foot_touching == false && is_touching_ground == true)
+    {
+        stance_start_ms = system_ms;
+        // now is the time to land
+    }
+    if(pre_is_foot_touching == true && is_touching_ground == false)
+    {
+        int stance_end_ms = system_ms;
+        Ts = 0.001 * (double)(stance_end_ms - stance_start_ms);
+    }
+    pre_is_foot_touching = is_touching_ground;// change the statues // a little delay
 }
 
-void MyRobot::robot_init() {
 
-}
-
-void MyRobot::robot_free() {
-
-
-}
 
 void MyRobot::update_robot_state_machine() {
 
+    switch(robot_state)
+    {
+        case LOADING:
+        {
+            if(joint_point.r < spring_normal_length * r_threshold)
+                robot_state = COMPRESSION;
+            break;
+        }
+        case COMPRESSION:
+        {
+            if(joint_point_dot.r > 0)
+                robot_state = THRUST;
+            break;
+        }
+        case THRUST:
+        {
+            if(joint_point.r > spring_normal_length * r_threshold)
+                robot_state = UNLOADING;
+            break;
+        }
+        case UNLOADING:
+        {
+            if(is_touching_ground == false)
+                robot_state = FLIGHT;
+            break;
+        }
+        case FLIGHT:
+        {
+            if(is_touching_ground == true)
+                robot_state = LOADING;
+            break;
+        }
+        default: break;
+    }
 }
 

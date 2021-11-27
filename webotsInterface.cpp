@@ -18,6 +18,7 @@ PositionSensor Z_motor_pos_sensor("z position sensor");
 Keyboard keyboard;
 void webots_device_init()
 {
+
     spring_position_sensor.enable(TIME_STEP);
     X_motor_pos_sensor.enable(TIME_STEP);
     Z_motor_pos_sensor.enable(TIME_STEP);
