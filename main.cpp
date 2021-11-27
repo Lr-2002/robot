@@ -3,24 +3,38 @@
 #include <webots/Robot.hpp>
 #include <webots/DistanceSensor.hpp>
 #include "controller.hpp"
-#include "webotsInterface.hpp"
 using namespace std;
 using namespace Eigen;
 int main(int argc, char ** argv)
 {
-    wb_robot_init(); // todo to implementation
-    webots_device_init();
-    robot_init();
+    auto * robot = new MyRobot();
 
-    while (wb_robot_step(TIME_STEP) != -1)
-    {
-        update_robot_state();
-        robot_control();
+
+    while (robot->step(TIME_STEP) != -1) {
+        robot -> run();
     }
+    robot->run();
 
-    robot_free();
-    wb_robot_cleanup();
+    delete robot;
     return 0;
+
+
+
+
+////
+////    wb_robot_init(); // todo to implementation
+////    webots_device_init();
+////    robot_init();
+////
+////    while (wb_robot_step(TIME_STEP) != -1)
+////    {
+////        update_robot_state();
+////        robot_control();
+////    }
+////
+////    robot_free();
+////    wb_robot_cleanup();
+//    return 0;
 
 
 }

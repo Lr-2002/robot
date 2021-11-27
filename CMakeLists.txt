@@ -14,7 +14,7 @@ ELSE()
 ENDIF()
 
 file(GLOB C_SOURCES *.c)
-file(GLOB CPP_SOURCES *.cpp)
+file(GLOB CPP_SOURCES controller.cpp main.cpp)
 set(SOURCES ${C_SOURCES} ${CPP_SOURCES})
 
 if (NOT CPP_SOURCES STREQUAL "")  # Sources contain C++ files
